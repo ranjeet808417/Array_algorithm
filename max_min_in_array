@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+void  ispresent(int arr[],int n){
+int max=arr[0];
+int min=arr[0];
+
+for(int i=1;i<n;i++){
+       if(max<arr[i]){
+               max=arr[i];
+       }
+       if(min>arr[i]){
+               min=arr[i];
+       }
+
+}
+cout<<"max "<<max<<" "<<"min "<<min;
+}
+
+
+int main() {
+    
+int n;
+cin>>n;
+int *arr=new int[n];
+for(int i=0;i<n;i++){
+        cin>>arr[i];
+}
+ispresent(arr,n);
+}
