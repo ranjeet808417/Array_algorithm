@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+void  bubble_sort(int arr[],int n,int x){
+int count=0;
+for(int i=0;i<n;i++){
+        if(arr[i]==x){
+                count++;
+        }
+}
+
+cout<<"Occurence of element "<<x<<"is "<<count<<endl;
+
+}
+
+
+int main() {
+    
+int n;
+cin>>n;
+int *arr=new int[n];
+for(int i=0;i<n;i++){
+        cin>>arr[i];
+}
+int x;
+cin>>x;
+bubble_sort(arr,n,x);
+for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+}
+}
