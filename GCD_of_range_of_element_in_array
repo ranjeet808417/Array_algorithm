@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int gcd(int a,int b){
+if(a==0){
+        return b;
+}
+
+return gcd(b%a,a);
+
+}
+int gcd_of_range(int arr[],int n,int s,int e){
+
+int res=arr[s];
+for(int i=s+1;i<=e;i++){
+ res=gcd(res,arr[i]);
+
+
+}
+return res;
+}
+
+int main() {
+   int n;
+   cin>>n;
+   int arr[n];
+   for(int i=0;i<n;i++){
+           cin>>arr[i];
+   }
+   int a;
+   int b;
+   cin>>a>>b;
+    cout<<gcd_of_range(arr,n,a,b);
+}
