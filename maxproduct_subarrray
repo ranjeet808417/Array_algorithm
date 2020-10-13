@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+long long int maxProduct(long long int *arr, long long int  n) {
+	    // code here
+
+     long long int  prevmin=arr[0];
+     long long int  prevmax=arr[0];
+     long long int  res=arr[0];
+     long long int currmax=arr[0];
+     long long int currmin=INT_MAX;
+     for(int i=1;i<n;i++){
+         
+         currmin=min(prevmin*arr[i],min(prevmax*arr[i],arr[i]));
+          currmax=max(prevmax*arr[i],max(prevmin*arr[i],arr[i]));
+          res=max(res,currmax);
+          prevmax=currmax;
+          prevmin=currmin;
+          
+         
+     }
+return res;
+}
+
+int main() {
+   long long int n;
+   cin>>n;
+   long long int arr[n];
+   for(int i=0;i<n;i++){
+
+cin>>arr[i];
+
+   }
+cout<<maxProduct(arr,n);
+}
