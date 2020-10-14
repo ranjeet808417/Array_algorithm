@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+int median(vector<vector<int>> &matrix, int r, int c){
+        // code here          
+    int min=INT_MAX;
+    int max=INT_MIN;
+    for(int i=0;i<r;i++){
+        if(min>matrix[i][0]){
+            min=matrix[i][0];
+        }
+        
+        if(max<matrix[i][c-1]){
+            max=matrix[i][c-1];
+        }
+        
+    }
+        
+      int element=(r*c+1)/2;  
+        while(min<max){
+            int mid=(min+max)/2;
+            int count=0;
+            for(int i=0;i<r;i++){
+              count+=upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();  
+            }
+            if(count<element){
+                min=mid+1;
+            }
+            else{
+                max=mid;
+            }
+            
+            
+        }
+        
+        return min;
+        
+    }
+int main() {
+    int r,c;
+    cin>>r>>c;
+    vector<vector<int>>vec(r,vector<int>(c));
+
+    for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                    cin>>vec[i][j];
+            }
+    }
+    
+    cout<<median(vec,r,c)<<endl;
+}
