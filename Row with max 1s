@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+ int findlength(vector<vector<int>>&arr,int n,int m,int s,int e){
+     int start=0;
+     int end=e;
+    int index=-1;
+     while(start<=end){
+       int mid=(start+end)/2;  
+       
+         if(arr[s][mid]>=1){
+             end=mid-1;
+        index=mid;
+         }
+         else{
+             start=mid+1;
+         }
+         
+     }
+     return index;
+     	    
+	    
+	}
+int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    // code here
+	int row=-1;
+	int len=0;
+	    for(int i=0;i<n;i++){
+	        int a=findlength(arr,n,m,i,m-1);
+	        if(a!=-1 && m-1-a+1>len){
+	            len=m-a;
+	            row=i;
+	        }
+	        
+	        
+	    }
+	    
+	    return row;
+	    
+	    
+	}
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    vector<vector<int>>vec(n,vector<int>(m));
+for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+                cin>>vec[i][j];
+        }
+}
+
+cout<<rowWithMax1s(vec,n,m);
+}
