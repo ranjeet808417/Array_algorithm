@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+void spirally_traverse(vector<vector<int>>&vec,int r,int c){
+    
+    int i=0;
+    int j=r;
+    int l=0;
+    int m=c;
+    while(i<j && l<m){
+        for(int k=l;k<m;k++){
+            
+            cout<<vec[i][k]<<" ";
+        }
+        i++;
+        for(int k=i;k<j;k++){
+            
+            cout<<vec[k][m-1]<<" ";
+        }
+        m--;
+        
+       if(i<j){
+        for(int k=m-1;k>=l;k--){
+            cout<<vec[j-1][k]<<" ";
+            
+        }
+      j--;
+       }
+       
+       
+       if(l<m){
+           
+           for(int k=j-1;k>=i;k--){
+               cout<<vec[k][l]<<" ";
+           }
+           l++;
+           
+       }
+      }
+
+    
+}
+int main()
+ {
+
+int t;
+cin>>t;
+while(t--){
+    int r,c;
+    cin>>r>>c;
+    vector<vector<int>>vec(r,vector<int>(c));
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            
+            cin>>vec[i][j];
+        }
+    }
+    
+    
+    spirally_traverse(vec,r,c);
+    cout<<endl;
+    
+}
+
+
+	//code
+	return 0;
+}
