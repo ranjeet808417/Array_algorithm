@@ -1,0 +1,119 @@
+#include<bits/stdc++.h>
+using namespace std;
+void smallest_windows(string s,int n){
+int arr[256];
+memset(arr,0,sizeof(arr));
+int dist_count=0;
+for(int i=0;i<n;i++){
+        if(arr[s[i]]==0){
+        dist_count++;
+        arr[s[i]]=1;
+        }
+}
+int globallength=INT_MAX;
+int index=0;
+for(int i=0;i<n;i++){
+int count=0;
+//string temp="";
+int start=i;
+int visited[256]={0};
+int j;
+for( j=i;j<n;j++){
+if(visited[s[j]]==0){
+        count++;
+visited[s[j]]=1;
+}
+if(count==dist_count){
+        break;
+}
+}
+int min_length=j-start+1;
+if(min_length<globallength && count==dist_count){
+        index=start;
+        globallength=min_length;
+}
+
+}
+
+cout<<s.substr(index,globallength);
+}
+
+
+
+int main() {
+    
+string s;
+cin>>s;
+smallest_windows(s,s.length());
+
+}
+
+/*................
+#include<bits/stdc++.h>
+using namespace std;
+int  smallest_windows(string s,int n){
+int dist_count=0;
+int arr[256]={0};
+for(int i=0;i<n;i++){
+        if(arr[s[i]]==0){
+                dist_count++;
+        arr[s[i]]=1;
+        }
+
+}
+int start=0;
+int end=0;
+int ar[256]={0};
+int count=0;
+int index=0;
+int glength=INT_MAX;
+while(end<n){
+ar[s[end]]++;
+if(ar[s[end]]==1){
+        count++;
+}
+if(count==dist_count){
+while(ar[s[start]]>1){
+ar[s[start]]--;
+start++;
+
+}
+int min_length=end-start+1;
+if(min_length<glength){
+        glength=min_length;
+        index=start;
+}
+
+}
+
+end++;
+}
+
+
+return glength;
+}
+
+
+
+int main() {
+   int t;
+   cin>>t;
+   while(t--){
+string s;
+cin>>s;
+cout<<smallest_windows(s,s.length());
+cout<<endl;
+}
+
+}
+=====================*/
+
+
+
+
+
+
+
+
+
+
